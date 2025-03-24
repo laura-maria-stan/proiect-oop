@@ -1,20 +1,8 @@
-# Nu primesc notă pentru că nu am pus titlu și descriere
+# Pink Pony Club
 
 ### Folosiți template-ul corespunzător grupei voastre!
 
-| Laborant  | Link template                                |
-|-----------|----------------------------------------------|
-| Dragoș B  | https://github.com/Ionnier/oop-template      |
-| Tiberiu M | https://github.com/MaximTiberiu/oop-template |
-| Marius MC | https://github.com/mcmarius/oop-template     |
-
-### Important!
-
-Aveți voie cu cod generat de modele de limbaj la care nu ați contribuit semnificativ doar în folder-ul `generated`.
-Codul generat pus "ca să fie"/pe care nu îl înțelegeți se punctează doar pentru puncte bonus, doar în contextul
-în care oferă funcționalități ajutătoare și doar dacă are sens.
-
-O cerință nu se consideră îndeplinită dacă este realizată doar prin cod generat.
+A farm game, in which you, the main character, a pink pony, can choose which role you'd like to have in the Pink Pony Club. You can be a farmer, a cook, a cleaner, an adventurer or a healer. The purpose of the game is to help your community of pink ponies survive hardships.
 
 - **Fără cod de umplutură/fără sens!**
 - **Fără copy-paste!**
