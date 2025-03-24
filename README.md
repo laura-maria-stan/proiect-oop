@@ -1,7 +1,5 @@
 # Pink Pony Club
 
-### Folosiți template-ul corespunzător grupei voastre!
-
 A farm game, in which you, the main character, a pink pony, can choose which role you'd like to have in the Pink Pony Club. You can be a farmer, a cook, a cleaner, an adventurer or a healer. The purpose of the game is to help your community of pink ponies survive hardships.
 
 - **Fără cod de umplutură/fără sens!**
