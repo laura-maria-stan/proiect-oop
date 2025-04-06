@@ -11,7 +11,7 @@ project(${MAIN_PROJECT_NAME})
 # set(CMAKE_PROJECT_VERSION_MINOR 0)
 # set(CMAKE_PROJECT_VERSION_PATCH 1)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -51,6 +51,18 @@ include(cmake/CopyHelper.cmake)
 add_executable(${MAIN_EXECUTABLE_NAME}
     main.cpp
     generated/src/Helper.cpp
+        Pony.cpp
+        Pony.h
+        Player.cpp
+        Player.h
+        Role.cpp
+        Role.h
+        Status.cpp
+        Status.h
+        Role_of_chef.cpp
+        Role_of_chef.h
+        Role_of_chef.h
+        Role_of_chef.h
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )
