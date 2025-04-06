@@ -16,12 +16,12 @@ private:
 public:
     Status() {}
 
-    Status(int health_,int happiness_,int hunger_): health(health_),happiness(happiness_),hunger(hunger_) {};
+    explicit Status(int health_,int happiness_,int hunger_): health(health_),happiness(happiness_),hunger(hunger_) {};
 
     Status(Status &other): health(other.health), happiness(other.happiness), hunger(other.hunger) {};
 
 //    reminder ca in op= trimitem cu referinta obiectul care e returnat ca sa nu i mai facem o copie. de asta pun Status&
-    Status& operator=(Status const &other)
+    Status& operator=(const Status &other)
     {
         health=other.health;
         happiness=other.happiness;
@@ -31,7 +31,7 @@ public:
 
     }
 
-    friend std::ostream& operator<< (std::ostream &os, Status &stat)
+    friend std::ostream& operator<< (std::ostream &os, const Status &stat)
     {
         os<< "cu statusul "<< stat.health <<" sanatate, "<<stat.happiness<<" fericire si "<<100-stat.hunger<<" satietate\n";
         return os;

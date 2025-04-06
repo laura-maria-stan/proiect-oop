@@ -34,7 +34,7 @@ class Pony {
 //            Status* pony_status= new Status(*other.pony_status);
         }
 
-        Pony& operator= (Pony& other)
+        Pony& operator= (const Pony& other)
         {
             name=other.name;
 //            pony_role=other.pony_role;
@@ -51,7 +51,7 @@ class Pony {
             delete pony_role;
             delete pony_status;
         }
-        friend std::ostream& operator<< (std::ostream& os, Pony const &ob)
+        friend std::ostream& operator<< (std::ostream& os, const Pony &ob)
         {
             os<< "The pony "<<ob.name<<" has the role of the "<<ob.pony_role<<" and the status of "<<ob.pony_status;
             return os;

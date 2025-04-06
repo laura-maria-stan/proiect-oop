@@ -13,15 +13,15 @@ private:
     std::string name;
 public:
     Role(): name("farmer") {}
-    Role(const std::string& name_): name(name_) {}
+    explicit Role(const std::string& name_): name(name_) {}
     Role(Role &other): name(other.name) {}
-    Role& operator= (Role &other)
+    Role& operator= (Role const &other)
     {
         this->name=other.name;
         return *this;
     }
     ~Role()=default;
-    friend std::ostream& operator<<(std::ostream& os, Role &ob)
+    friend std::ostream& operator<<(std::ostream& os, const Role &ob)
     {
         os<<"the role of "<<ob.name;
         return os;
