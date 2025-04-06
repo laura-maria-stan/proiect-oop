@@ -14,13 +14,20 @@
 class Pony {
     private:
         std::string name;
-        Role* pony_role;
+        Role* pony_role{};
         //abstract class
-        Status* pony_status;
+        Status* pony_status{};
         //how hungry, healthy, happy a pony is
         //the ponies need each other to survive
     public:
-        Pony()=default;
+        Pony()
+        {
+            pony_role=nullptr;
+            pony_status= nullptr;
+            delete pony_role;
+            delete pony_status;
+
+        }
         Pony( std::string &name_, Role* pony_role_, Status* pony_status_): name(name_), pony_role(pony_role_), pony_status(pony_status_) {}
         Pony( Pony &other): name(other.name)
         {
@@ -36,12 +43,23 @@ class Pony {
 
         Pony& operator= (const Pony& other)
         {
+            if(&other==this) //dc trb sa pun &other?
+            {
+                return *this;
+            }
+
+
             name=other.name;
 //            pony_role=other.pony_role;
 //            daca pun asa ar pointa amandoua spre aceeasi chestie
             this->pony_role= new Role(*other.pony_role);
 //ca un fel de Student s1=Student("Andrei",131); (numai ca aici pun new ptc asa se face la pointeri)
             this->pony_status= new Status(*other.pony_status);
+
+
+
+
+
             return *this;
             //trimitem valoarea dereferentiata
         }
