@@ -53,16 +53,20 @@ add_executable(${MAIN_EXECUTABLE_NAME}
     generated/src/Helper.cpp
         Pony.cpp
         Pony.h
-        Player.cpp
-        Player.h
+#        Player.cpp
+#        Player.h
         Role.cpp
         Role.h
         Status.cpp
         Status.h
         Role_of_chef.cpp
         Role_of_chef.h
-        Role_of_chef.h
-        Role_of_chef.h
+#        Role_of_chef.h
+#        Role_of_chef.h
+        Role_of_farmer.cpp
+        Role_of_farmer.h
+        Obiect.cpp
+        Obiect.h
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )
