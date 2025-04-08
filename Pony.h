@@ -10,26 +10,27 @@
 #define PROIECT_OOP_PONY_H
 
 #include "Role.h"
-#include "Status.h"
+//#include "Status.h"
 class Pony {
     private:
         std::string name;
         Role* pony_role{};
         //abstract class
-        Status* pony_status{};
+//        Status* pony_status{};
         //how hungry, healthy, happy a pony is
         //the ponies need each other to survive
     public:
         Pony()
         {
             pony_role=nullptr;
-            pony_status= nullptr;
+//            pony_status= nullptr;
             delete pony_role;
-            delete pony_status;
+//            delete pony_status;
 
         }
-        Pony( std::string &name_, Role* pony_role_, Status* pony_status_): name(name_), pony_role(pony_role_), pony_status(pony_status_) {}
-        Pony( Pony &other): name(other.name)
+        Pony( const std::string &name_, Role* const pony_role_): name(name_), pony_role(pony_role_) {}
+        // de ce nu ma lasa sa pun const Role* dar ma lasa sa pun Role*n const
+        Pony( Pony const &other): name(other.name)
         {
             this->pony_role = new Role(*other.pony_role);
 //            Role* pony_role= new Role(*other.pony_role); <----- aici am lasat pony_role arunat in aer.
@@ -37,7 +38,7 @@ class Pony {
 //            De asta trebuie sa pun this->pony_role (se poate si pony_role pur si simplu dar e mai usor de inteles asa).
 //            *other.pony_role se inlocuieste cu obiectul de tip Role la care pointa pony_role
 
-            this->pony_status= new Status(*other.pony_status);
+//            this->pony_status= new Status(*other.pony_status);
 //            Status* pony_status= new Status(*other.pony_status);
         }
 
@@ -54,7 +55,7 @@ class Pony {
 //            daca pun asa ar pointa amandoua spre aceeasi chestie
             this->pony_role= new Role(*other.pony_role);
 //ca un fel de Student s1=Student("Andrei",131); (numai ca aici pun new ptc asa se face la pointeri)
-            this->pony_status= new Status(*other.pony_status);
+//            this->pony_status= new Status(*other.pony_status);
 
 
 
@@ -67,11 +68,11 @@ class Pony {
         ~Pony ()
         {
             delete pony_role;
-            delete pony_status;
+//            delete pony_status;
         }
         friend std::ostream& operator<< (std::ostream& os, const Pony &ob)
         {
-            os<< "The pony "<<ob.name<<" has the role of the "<<ob.pony_role<<" and the status of "<<ob.pony_status;
+            os<< "The pony "<<ob.name<<" has the role of the "<<ob.pony_role<<"\n";
             return os;
         }
 

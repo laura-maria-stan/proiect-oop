@@ -54,7 +54,10 @@ public:
 
         create_Shop();
     }
-    explicit Role(const std::string& name_): name(name_) {}
+    explicit Role(const std::string& name_): name(name_) {
+
+    }
+
     Role(Role &other): name(other.name) {}
     Role& operator= (Role const &other)
     {
@@ -64,7 +67,9 @@ public:
     ~Role()=default;
     friend std::ostream& operator<<(std::ostream& os, const Role &ob)
     {
-        os<<"the role of "<<ob.name;
+//        os<<"the role of "<<ob.name;
+        os<<ob.name<<" pony";
+
         return os;
     }
 

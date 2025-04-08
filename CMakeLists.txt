@@ -57,8 +57,8 @@ add_executable(${MAIN_EXECUTABLE_NAME}
 #        Player.h
         Role.cpp
         Role.h
-        Status.cpp
-        Status.h
+#        Status.cpp
+#        Status.h
         Role_of_chef.cpp
         Role_of_chef.h
 #        Role_of_chef.h
