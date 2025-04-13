@@ -53,9 +53,6 @@ class Pony {
 //            this->pony_status= new Status(*other.pony_status);
 
 
-
-
-
             return *this;
             //trimitem valoarea dereferentiata
         }

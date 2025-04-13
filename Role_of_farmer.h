@@ -18,22 +18,24 @@ public:
             std::cout << *i;
     }
 
-    Role_of_farmer() {
-        cabinet_farmer = {nullptr};
-        //e bine???
-    };
+    Role_of_farmer(): cabinet_farmer({nullptr}) {/*e bine???*/};
 
     explicit Role_of_farmer(std::vector<Obiect *> &cabinet_farmer_) : cabinet_farmer(
             cabinet_farmer_) { cabinet_farmer_.clear(); }
 
     Role_of_farmer(Role_of_farmer &other) {
-        for(auto &i: other.cabinet_farmer)
+        for(auto const &i: other.cabinet_farmer)
         cabinet_farmer.push_back(new Obiect(*i));
     }
 
     Role_of_farmer &operator=(Role_of_farmer const &other)
     {
-        for(auto &i: other.cabinet_farmer)
+        if(&other==this) //dc trb sa pun &other?
+        {
+            return *this;
+        }
+
+        for(auto const &i: other.cabinet_farmer)
         {
             cabinet_farmer.push_back(new Obiect(*i));
         }

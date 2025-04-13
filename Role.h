@@ -56,7 +56,7 @@ protected:
 
     void show_Shop()
     {
-        for(auto & i : Shop)
+        for(auto const & i : Shop)
             std::cout<<*i;
         //dc are i referinta???
 //        for(int i=0;i<Shop.size();i++)
@@ -67,10 +67,7 @@ protected:
 
 
 public:
-    Role(): name() {
-
-        Shop={};
-        Objects_Pony_Is_Holding={};
+    Role(): name(),Shop{}, Objects_Pony_Is_Holding{} {
         create_Shop();
         first_object_on_back={};
         second_object_on_back={};
@@ -85,16 +82,16 @@ public:
         //e bine??????
     }
 
-    Role(Role &other): name(other.name)
+    explicit Role(Role &other): name(other.name)
     {
 
 
-        for(auto &i: other.Shop)
+        for(auto const &i: other.Shop)
         {
             Shop.push_back(new Obiect(*i));
         }
 
-        for(auto &j: other.Objects_Pony_Is_Holding)
+        for(auto const &j: other.Objects_Pony_Is_Holding)
         {
             Objects_Pony_Is_Holding.push_back(new Obiect(*j));
         }
@@ -107,13 +104,18 @@ public:
     }
     Role& operator= (Role const &other)
     {
+        if(&other==this) //dc trb sa pun &other?
+        {
+            return *this;
+        }
+
         this->name=other.name;
-        for(auto &i: other.Shop)
+        for(auto const &i: other.Shop)
         {
             Shop.push_back(new Obiect(*i));
         }
 
-        for(auto &j: other.Objects_Pony_Is_Holding)
+        for(auto const &j: other.Objects_Pony_Is_Holding)
         {
             Objects_Pony_Is_Holding.push_back(new Obiect(*j));
         }
@@ -139,10 +141,10 @@ public:
 //        os<<"the role of "<<ob.name;
         os<<"role name: "<<ob.name<<"1st obj on back: "<<*ob.first_object_on_back<<"2nd obj on back: "<<*ob.second_object_on_back<<"\n";
         os<<"shop:\n";
-        for(auto &i:ob.Shop)
+        for(auto const &i:ob.Shop)
             os<<*i<<" ";
         os<<"objects pony is holding:\n";
-        for(auto &i:ob.Objects_Pony_Is_Holding)
+        for(auto const &i:ob.Objects_Pony_Is_Holding)
             os<<*i<<" ";
 
         return os;
