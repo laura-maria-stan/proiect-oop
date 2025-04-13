@@ -3,3 +3,7 @@
 //
 
 #include "Role_of_farmer.h"
+
+//Role_of_farmer::Role_of_farmer() {
+
+//}

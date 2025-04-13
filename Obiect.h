@@ -17,10 +17,15 @@ private:
     int availability;
     int code;
 public:
-    Obiect() {availability=10;}
+    Obiect() {
+        availability = 10;
+        price = 0;
+        code = 0;
+        name = "";
+    }
     Obiect(std::string name_, int price_, int availability_, int code_): name(std::move(name_)),price(price_),availability(availability_),code(code_) {}
-    Obiect(Obiect &other): name(other.name), price(other.price), availability(other.availability), code(other.code) {}
-    Obiect& operator=(Obiect& other)
+    Obiect(Obiect &other)= default;
+    Obiect & operator=(Obiect const& other)
     {
         name=other.name;
         price=other.price;

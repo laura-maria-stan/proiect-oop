@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <utility>
 #include <vector>
 
 #ifndef PROIECT_OOP_PONY_H
@@ -16,19 +17,13 @@ class Pony {
         std::string name;
         Role* pony_role{};
         //abstract class
-//        Status* pony_status{};
-        //how hungry, healthy, happy a pony is
-        //the ponies need each other to survive
     public:
         Pony()
         {
             pony_role=nullptr;
-//            pony_status= nullptr;
-            delete pony_role;
-//            delete pony_status;
 
         }
-        Pony( const std::string &name_, Role* const pony_role_): name(name_), pony_role(pony_role_) {}
+        Pony( std::string name_, Role* const pony_role_): name(std::move(name_)), pony_role(pony_role_) {}
         // de ce nu ma lasa sa pun const Role* dar ma lasa sa pun Role*n const
         Pony( Pony const &other): name(other.name)
         {

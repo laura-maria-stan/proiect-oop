@@ -12,16 +12,9 @@
 
 class Role_of_chef: protected Role {
 private:
-    std::vector <std::string> cabinet;
+    std::vector <std::string> cabinet_chef;
 public:
-    void show_Shop()
-    {
-        for(auto & i : Shop)
-            std::cout<<*i;
-        //dc are i referinta???
-//        for(int i=0;i<Shop.size();i++)
 
-    }
 };
 
 

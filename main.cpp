@@ -6,6 +6,7 @@
 #include "Role.h"
 //#include "Status.h"
 #include "Pony.h"
+#include "Obiect.h"
 
 
 
@@ -32,26 +33,39 @@ int main()
                "Type 2 for cook\n"
                "Type 3 for healer\n";
     int nr_input;
-    Role *role_of_pony=new Role();
+//    Role *role_of_pony=new Role();
 //    std::cout<<*role_of_pony;
     std::cin>>nr_input;
+    std::string task;
     if(nr_input==1)
     {
-        Role *role_of_pony=new Role("farmer");
-        std::cout<<"You have selected "<<*role_of_pony<<"!\nThis "<<*role_of_pony<<" needs a name!\n";
+//        Role *role_of_pony=new Role("farmer");
+        task="farmer";
+        std::cout<<"You have selected "<<task<<"!\nThis "<<task<<" needs a name!\n";
 
 
     }
     else if(nr_input==2)
     {
-        Role *role_of_pony=new Role("cook");
-        std::cout<<"You have selected "<<*role_of_pony<<"!\nThis "<<*role_of_pony<<" needs a name!\n";
+//        Role *role_of_pony=new Role("cook");
+        task="chef";
+        std::cout<<"You have selected "<<task<<"!\nThis "<<task<<" needs a name!\n";
     }
     else
     {
-        Role *role_of_pony=new Role("healer");
-        std::cout<<"You have selected "<<*role_of_pony<<"!\nThis "<<*role_of_pony<<" needs a name!\n";
+//        Role *role_of_pony=new Role("healer");
+        task="healer";
+        std::cout<<"You have selected "<<task<<"!\nThis "<<task<<" needs a name!\n";
     }
+
+    std::vector <Obiect*> v1_shop={};
+    auto *ob=new Obiect("ob",0,10,0);
+    std::vector <Obiect*> v2_objects_pony_is_holding={ob};
+    Obiect* v3_first_obj_on_back=ob, *v4_second_obj_on_back=ob;
+
+    Role *role_of_pony=new Role("", v1_shop, v2_objects_pony_is_holding, v3_first_obj_on_back, v4_second_obj_on_back);
+    
+    std::cout<<*role_of_pony;
 
     std::string input;
     std::cin>>input;
