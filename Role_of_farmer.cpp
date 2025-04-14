@@ -7,3 +7,6 @@
 //Role_of_farmer::Role_of_farmer() {
 
 //}
+//Role_of_farmer::Role_of_farmer(const Role_of_farmer &other) {
+//
+//}

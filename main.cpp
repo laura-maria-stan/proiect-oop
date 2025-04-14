@@ -1,13 +1,13 @@
 #include <iostream>
-#include <fstream>
+//#include <fstream>
 #include <string>
 #include <vector>
 
 #include "Role.h"
 //#include "Status.h"
 #include "Pony.h"
-#include "Obiect.h"
-
+//#include "Obiect.h"
+#include "Role_of_farmer.h"
 
 
 int main()
@@ -41,7 +41,7 @@ int main()
     {
 //        Role *role_of_pony=new Role("farmer");
         task="farmer";
-        std::cout<<"You have selected "<<task<<"!\nThis "<<task<<" needs a name!\n";
+//        std::cout<<"You have selected "<<task<<"!\nThis "<<task<<" needs a name!\n";
 
 
     }
@@ -49,30 +49,101 @@ int main()
     {
 //        Role *role_of_pony=new Role("cook");
         task="chef";
-        std::cout<<"You have selected "<<task<<"!\nThis "<<task<<" needs a name!\n";
+//        std::cout<<"You have selected "<<task<<"!\nThis "<<task<<" needs a name!\n";
     }
     else
     {
 //        Role *role_of_pony=new Role("healer");
         task="healer";
-        std::cout<<"You have selected "<<task<<"!\nThis "<<task<<" needs a name!\n";
+
     }
+    std::cout<<"You have selected "<<task<<"!\nThis "<<task<<" needs a name!\n";
 
-    std::vector <Obiect*> v1_shop={};
-    auto *ob=new Obiect("ob",0,10,0);
-    std::vector <Obiect*> v2_objects_pony_is_holding={ob};
-    Obiect* v3_first_obj_on_back=ob, *v4_second_obj_on_back=ob;
-
-    Role *role_of_pony=new Role("", v1_shop, v2_objects_pony_is_holding, v3_first_obj_on_back, v4_second_obj_on_back);
-    
-    std::cout<<*role_of_pony;
 
     std::string input;
     std::cin>>input;
+    Role *role_of_pony=new Role(task);
     Pony ponei=Pony(input, role_of_pony);
 
     std::cout<<"We wish you a warm welcome"
                ", "<<input<<"!\nGood luck "
-                            "at your new job of "<<*role_of_pony<<"!\n";
+                            "at your new job of "<<task<<"!\n";
+
+    Role_of_farmer un_fermier;
+    std::string produs_fermier;
+    int OK_first_day=0;
+    unsigned int attempts_day_one=0;
+    std::cout<<"\n\n\nWelcome to your first day on the job!\n"
+               "Here comes your first customer!\n"
+               "   /0-      |------------------------|\n"
+               "/---|       |   I want a red fruit!  |\n"
+               "|   |       |________________________|\n\n\n";
+    while(OK_first_day==0 && attempts_day_one!=3)
+    {
+        attempts_day_one++;
+        std::cout<<"attempts of day one="<<attempts_day_one;
+        std::cout<<"\nType what object you think the pony is referring to in order to search for it in the cabinet\n";
+        std::cin>>produs_fermier;
+        std::cout<<"U TYPED: "<<produs_fermier<<"\n";
+        if(un_fermier.is_it_available(produs_fermier))
+        {
+            std::cout<<"Correct! This is exactly what your client wanted!\n"
+                       "You have completed your first order!\n"
+                       "Congrats!\n";
+            OK_first_day=1;
+        }
+        else
+        {
+            std::cout<<"Looks like "<<produs_fermier<<" is not what your client wanted :(\n";
+
+        }
+        std::cout<<"ok first day: "<<OK_first_day<<"\n";
+    }
+
+    if(attempts_day_one==3)
+    {
+        std::cout<<"Your client has gotten tired and left :("
+                   "\n";
+    }
+    else
+    {
+        std::cout<<"\n\nAnother customer steps into the shop\n"
+                   "Press any key to take their order\n\n";
+        std::string val;
+        std::cin>>val;
+        std::cout<<"\n\n"
+                   "   /0-      |--------------------------------|\n"
+                   "/---|       |   I want an orange vegetable!  |\n"
+                   "|   |       |________________________________|\n\n\n";
+        std::cin>>produs_fermier;
+        unsigned int OK_second_day=0,attempts_day_two=0;
+        while(OK_second_day==0 && attempts_day_two!=3)
+        {
+            attempts_day_two++;
+            std::cout<<"Type what object you think the pony is referring to in order to search for it in the cabinet\n";
+            std::cin>>produs_fermier;
+            if(un_fermier.is_it_available(produs_fermier))
+            {
+                std::cout<<"Correct! This is exactly what your client wanted!\n"
+                           "You have completed your first order!\n"
+                           "Congrats!\n";
+                OK_second_day=1;
+            }
+            else
+            {
+                std::cout<<"Looks like this is not what your client wanted :(\n";
+
+            }
+        }
+        if(attempts_day_two==3)
+            std::cout<<"Your client has gotten tired and left :("
+                       "\n";
+
+    }
+    std::cout<<"FIRST DAY-OVER";
+
+
+
+
 
 }

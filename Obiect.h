@@ -13,11 +13,11 @@
 class Obiect {
 private:
     std::string name;
-    int price;
-    int availability;
-    int code;
+    int price=0;
+    int availability=10;
+    int code=0;
 public:
-    Obiect(): price(0), availability(10), code(0) {}
+    Obiect(): name() {}
     Obiect(std::string name_, int price_, int availability_, int code_): name(std::move(name_)),price(price_),availability(availability_),code(code_) {}
     Obiect(Obiect &other)= default;
     Obiect & operator=(Obiect const& other)
@@ -37,6 +37,20 @@ public:
     {
         os<<"name product: "<<ob.name<<"\nprice:"<<ob.price<<"\nhow many are available?"<<ob.availability<<"\n";
         return os;
+    }
+    std::string get_name()
+    {
+        return name;
+    }
+    int get_code() const
+    {
+        return code;
+    }
+
+    unsigned int take_one_obj_out_of_cabinet()
+    {
+        availability--;
+        return availability;
     }
 
 };
