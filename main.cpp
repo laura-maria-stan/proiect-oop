@@ -90,9 +90,7 @@ int main() {
             std::string input1;
             attempts++;
             std::cin>>input1;
-            std::cout<<"u searched for: "<<input1<<"\n";
             check=our_farmer.is_it_available(input1);
-            std::cout<<"u searched for: "<<input1<<"\n";
             if(check)
             {
                 if(input1=="tomato")
@@ -102,11 +100,12 @@ int main() {
                 }
                 else
                 {
-                    std::cout<<"This is not what your client wanted\nType your next guess:";
+                    std::cout<<"This is not what your client wanted\n";
+
                 }
 
             }
-            if(attempts!=2 || OK!=0)
+            if(attempts!=3 && OK!=0)
             {
                 std::cout<<"rn attempts e "<<attempts<<"\n";
                 std::cout<<"Type your next guess: ";

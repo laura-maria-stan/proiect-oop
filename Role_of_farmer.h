@@ -153,12 +153,13 @@ public:
 
 
                     }
-                    std::cout<<"Sorry, we couldnt find "<<name_wanted_obj<<" in the cabinet\n";
-                    return 0;
+
 
 
         }
+        std::cout<<"Sorry, we couldnt find "<<name_wanted_obj<<" in the cabinet\n";
         return 0;
+
 
 
 
