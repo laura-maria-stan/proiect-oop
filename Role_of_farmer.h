@@ -73,6 +73,7 @@ public:
     {
         int index = -1;
         int ERASE=0,poz=0;
+        Obiect *alt_pointer;
         for (auto &i: cabinet_farmer) // cppcheck-suppress constVariableReference
         {
             index++;
@@ -80,24 +81,26 @@ public:
 //            {
 //                i = *cabinet_farmer.end();
 //            }
-            if (i->get_availability() == 1) {
+                if (i->get_availability() == 1) {
 
-//                Obiect *alt_pointer = cabinet_farmer[index];
-                ERASE=1;
-                poz=index;
-                //a sters obiectul din cabinet
-//                delete alt_pointer;
-                //e bine????
+                    alt_pointer = cabinet_farmer[index];
+                    ERASE = 1;
+                    poz = index;
+                    //a sters obiectul din cabinet
+//
+                    //e bine????
 
-            }
+                }
+        }
                 if(ERASE==1)
                 {
                     cabinet_farmer.erase(cabinet_farmer.begin() + poz);
-                    i->decrease_availability();
+                    alt_pointer->decrease_availability();
+                    delete alt_pointer;
                 }
 
 
-        }
+
 
 
     }

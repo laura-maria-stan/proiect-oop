@@ -84,7 +84,7 @@ int main() {
 
 
         int OK=1,attempts=0;
-        bool check;
+
         while(OK==1 && attempts !=3)
         {
             std::string input1;
