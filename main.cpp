@@ -64,7 +64,7 @@ int main() {
         interfata_ponei.click_any_key_to_continue();
 
         Role_of_farmer our_farmer;
-        std::string produs_fermier;
+
 
         std::cout << "\n\n\nWelcome to your first day on the job!\n";
         interfata_ponei.click_any_key_to_continue();
@@ -90,8 +90,7 @@ int main() {
             std::string input1;
             attempts++;
             std::cin>>input1;
-            check=our_farmer.is_it_available(input1);
-            if(check)
+            if(our_farmer.is_it_available(input1))
             {
                 if(input1=="tomato")
                 {

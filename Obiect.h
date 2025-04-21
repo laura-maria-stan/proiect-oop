@@ -38,7 +38,7 @@ public:
         os<<"->"<<ob.name<<" - "<<ob.availability<<" available";
         return os;
     }
-    std::string get_name()
+    std::string const get_name() const
     {
 //        std::cout<<"mi ai cerut numele obiectului: "<<name<<"\n";
         return name;
@@ -51,7 +51,7 @@ public:
     {
         return availability;
     }
-    int decrease_availability()
+    void decrease_availability()
     {
         availability--;
     }

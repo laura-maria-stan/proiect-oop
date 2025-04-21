@@ -17,7 +17,7 @@ private:
     void create_cabinet()
     {
 //        std::cout<<"CREEAZA CABINETUL\n";
-        for(auto &i:Shop)
+        for(auto &i:Shop) // cppcheck-suppress constVariableReference
         {
             if(i->get_code()==1)
             {
@@ -38,7 +38,7 @@ public:
     };
 
     Role_of_farmer(Role_of_farmer const &other)  : Role (other) {
-        for(auto const &i: other.cabinet_farmer)
+        for(auto const &i: other.cabinet_farmer) // cppcheck-suppress constVariableReference
         cabinet_farmer.push_back(new Obiect(*i));
     }
 
@@ -49,7 +49,7 @@ public:
             return *this;
         }
 
-        for(auto const &i: other.cabinet_farmer)
+        for(auto const &i: other.cabinet_farmer) // cppcheck-suppress constVariableReference
         {
             cabinet_farmer.push_back(new Obiect(*i));
         }
@@ -64,7 +64,7 @@ public:
 
     void show_cabinet() {
         std::cout<<"-------THE CABINET-------\n";
-        for (auto &i: cabinet_farmer)
+        for (auto &i: cabinet_farmer) // cppcheck-suppress constVariableReference
             std::cout <<*i<<"\n";
         std::cout<<"-------------------------\n";
     }
@@ -72,22 +72,30 @@ public:
     void take_one_obj_out_of_cabinet(std::string const &wanted_object)
     {
         int index = -1;
-        for (auto &i: cabinet_farmer)
+        int ERASE=0,poz=0;
+        for (auto &i: cabinet_farmer) // cppcheck-suppress constVariableReference
         {
             index++;
-            if (i->get_name() == wanted_object) {
-                i = *cabinet_farmer.end();
-            }
+            if (i->get_name() == wanted_object)
+//            {
+//                i = *cabinet_farmer.end();
+//            }
             if (i->get_availability() == 1) {
 
-                Obiect *alt_pointer = cabinet_farmer[index];
-                cabinet_farmer.erase(cabinet_farmer.begin() + index);
+//                Obiect *alt_pointer = cabinet_farmer[index];
+                ERASE=1;
+                poz=index;
                 //a sters obiectul din cabinet
-                delete alt_pointer;
+//                delete alt_pointer;
                 //e bine????
 
             }
-            i->decrease_availability();
+                if(ERASE==1)
+                {
+                    cabinet_farmer.erase(cabinet_farmer.begin() + poz);
+                    i->decrease_availability();
+                }
+
 
         }
 
@@ -103,7 +111,7 @@ public:
         Interfata interf_in_is_it_available;
         std::cout << "Searching for " << name_wanted_obj << " in the cabinet...\n";
         interf_in_is_it_available.click_any_key_to_continue();
-        for (auto &j: cabinet_farmer)
+        for (auto &j: cabinet_farmer) // cppcheck-suppress constVariableReference
         {
 
 //

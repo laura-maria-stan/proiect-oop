@@ -52,14 +52,14 @@ protected:
     std::vector <Obiect*> Shop;
     Obiect* first_object_on_back=nullptr;
     Obiect* second_object_on_back=nullptr;
-
-    void show_Shop()
-    {
-        for(auto const & i : Shop)
-            std::cout<<*i;
-
-    }
-
+//
+//    void show_Shop()
+//    {
+//        for(auto const & i : Shop)
+//            std::cout<<*i;
+//
+//    }
+//L AM COMENTAT CA FACEA FITE CPPCHECK
 
 
 
@@ -74,7 +74,7 @@ public:
     Role(Role const &other): name(other.name)
     {
 
-        for(auto const &i: other.Shop)
+        for(auto const &i: other.Shop)  // cppcheck-suppress constVariableReference
         {
             Shop.push_back(new Obiect(*i));
         }
@@ -101,7 +101,7 @@ public:
         }
 
         this->name=other.name;
-        for(auto const &i: other.Shop)
+        for(auto const &i: other.Shop) // cppcheck-suppress constVariableReference
         {
             Shop.push_back(new Obiect(*i));
         }
@@ -132,7 +132,7 @@ public:
 //        os<<"the role of "<<ob.name;
         os<<"role name: "<<ob.name<<"1st obj on back: "<<*ob.first_object_on_back<<"2nd obj on back: "<<*ob.second_object_on_back<<"\n";
         os<<"shop:\n";
-        for(auto const &i:ob.Shop)
+        for(auto const &i:ob.Shop) // cppcheck-suppress constVariableReference
             os<<*i<<" ";
 //        os<<"objects pony is holding:\n";
 //        for(auto const &i:ob.Objects_Pony_Is_Holding)
