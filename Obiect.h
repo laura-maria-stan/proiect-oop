@@ -35,23 +35,28 @@ public:
     }
     friend std::ostream& operator<<(std::ostream &os, const Obiect &ob)
     {
-        os<<"name product: "<<ob.name<<"\nprice:"<<ob.price<<"\nhow many are available?"<<ob.availability<<"\n";
+        os<<"->"<<ob.name<<" - "<<ob.availability<<" available";
         return os;
     }
     std::string get_name()
     {
+//        std::cout<<"mi ai cerut numele obiectului: "<<name<<"\n";
         return name;
     }
     int get_code() const
     {
         return code;
     }
-
-    unsigned int take_one_obj_out_of_cabinet()
+    int get_availability() const
     {
-        availability--;
         return availability;
     }
+    int decrease_availability()
+    {
+        availability--;
+    }
+
+
 
 };
 

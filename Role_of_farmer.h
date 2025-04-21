@@ -8,30 +8,27 @@
 #include <iostream>
 #include "Obiect.h"
 #include <vector>
+#include "Interfata.h"
+#include <cstring>
 
 class Role_of_farmer: protected Role {
 private:
     std::vector<Obiect *> cabinet_farmer;
     void create_cabinet()
     {
+//        std::cout<<"CREEAZA CABINETUL\n";
         for(auto &i:Shop)
         {
             if(i->get_code()==1)
             {
                 auto obj=new Obiect(*i);
-                std::cout<<"obiectul de bagat in cabinet este "<<*obj<<"\n";
+//                std::cout<<"obiectul de bagat in cabinet este "<<*obj<<"\n";
                 cabinet_farmer.push_back(obj);
             }
 
         }
     }
 
-
-    void show_cabinet() {
-        std::cout<<"A INTRAT IN SHOW CABINET\n";
-        for (auto &i: cabinet_farmer)
-            std::cout <<"obiect in cab= "<<*i<<"\n";
-    }
 
 public:
 
@@ -65,51 +62,81 @@ public:
     }
 
 
+    void show_cabinet() {
+        std::cout<<"-------THE CABINET-------\n";
+        for (auto &i: cabinet_farmer)
+            std::cout <<*i<<"\n";
+        std::cout<<"-------------------------\n";
+    }
 
-
-
-
-
-
-    bool is_it_available(std::string const &name_wanted_obj)
+    void take_one_obj_out_of_cabinet(std::string const &wanted_object)
     {
-        std::cout<<"A INTRAT IN IS IT AVAILABLE\n";
-        show_cabinet();
-        int index=-1;
+        int index = -1;
+        for (auto &i: cabinet_farmer)
+        {
+            index++;
+            if (i->get_name() == wanted_object) {
+                i = *cabinet_farmer.end();
+            }
+            if (i->get_availability() == 1) {
 
-                for(auto &j:cabinet_farmer)
-                {
-                    index++;
-                    std::cout<<"THIS IS WHAT WAS SENT TO IS IT AVAILABLE:\n"<<name_wanted_obj<<"\n";
-                    std::cout<<"THIS IS WHAT IS IN THE OBJECT:\n"<<j->get_name()<<"\n";
+                Obiect *alt_pointer = cabinet_farmer[index];
+                cabinet_farmer.erase(cabinet_farmer.begin() + index);
+                //a sters obiectul din cabinet
+                delete alt_pointer;
+                //e bine????
 
-                    if(j->get_name().find(name_wanted_obj)==-1)
+            }
+            i->decrease_availability();
+
+        }
+
+
+    }
+
+
+
+
+
+
+    bool is_it_available(std::string const &name_wanted_obj) {
+        Interfata interf_in_is_it_available;
+        std::cout << "Searching for " << name_wanted_obj << " in the cabinet...\n";
+        interf_in_is_it_available.click_any_key_to_continue();
+        for (auto &j: cabinet_farmer)
+        {
+
+//
+//            std::string first_part_of_string;
+//            std::string copy=j->get_name();
+//            std::string *ptr=&copy;
+//            std::cout<<"nume seeds= "<<copy<<"\n";
+//            first_part_of_string= strtok(copy," ");
+//
+//        }
+//        return false;
+            if (j->get_name().find(name_wanted_obj)!=std::string::npos)
                     {
-                        std::cout<<"we found "<<name_wanted_obj<<" in the cabinet!\n"
-                                                                "type 1 to take the object from the cabinet or 0 to close the cabinet\n";
+                        std::cout<<"###WE FOUND "<<name_wanted_obj<<" IN THE CABINET!###\n"
+                                                                "Type 1 to take the object from the cabinet or 0 to search for another item from the cabinet\n";
                         bool input_nr;
                         std::cin>>input_nr;
                         if(input_nr==1)
                         {
 
-                            std::cout<<"Press 1 to give the object to the customer and press 0 to put the object back in the cabinet\n";
+                            std::cout<<"Press 1 to give the object to the customer or press 0 to open the cabinet again and search for another item\n";
                             bool input_nr2;
                             std::cin>>input_nr2;
                             if(input_nr2==1)
                             {
-                                unsigned int nr_objects_left_in_cabinet=j->take_one_obj_out_of_cabinet();
-//                                std::string remember=j->get_name();
-                                if(nr_objects_left_in_cabinet==0)
-                                {
-                                    cabinet_farmer.erase(cabinet_farmer.begin()+index);
-                                    //a sters obiectul din cabinet
-                                }
+                                take_one_obj_out_of_cabinet(name_wanted_obj);
+
                                 return true;
                             }
                             else
                             {
-                                std::cout<<"you closed the cabinet\n";
-                                return false;
+                                std::cout<<"You placed "<<name_wanted_obj<<" back in the cabinet\n";
+                                return 0;
                             }
 
 
@@ -119,20 +146,25 @@ public:
                         }
                         else
                         {
-                            std::cout<<"the object is not in the cabinet, you have to grab it from the shop next time you go! :(\n";
-                            return false;
+                            std::cout<<"You placed "<<name_wanted_obj<<" back in the cabinet\n";
+                            return 0;
                         }
 
 
+
                     }
-                }
+                    std::cout<<"Sorry, we couldnt find "<<name_wanted_obj<<" in the cabinet\n";
+                    return 0;
+
+
+        }
+        return 0;
 
 
 
 
 
 
-        return false;
 
     }
 

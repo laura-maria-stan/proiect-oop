@@ -67,6 +67,8 @@ add_executable(${MAIN_EXECUTABLE_NAME}
         Role_of_farmer.h
         Obiect.cpp
         Obiect.h
+        Interfata.cpp
+        Interfata.h
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )
