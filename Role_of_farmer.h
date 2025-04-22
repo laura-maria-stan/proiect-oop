@@ -17,7 +17,7 @@ private:
     void create_cabinet()
     {
 //        std::cout<<"CREEAZA CABINETUL\n";
-        for(auto &i:Shop) // cppcheck-suppress constVariableReference
+        for(auto &i:Shop)
         {
             if(i->get_code()==1)
             {
@@ -64,7 +64,7 @@ public:
 
     void show_cabinet() {
         std::cout<<"-------THE CABINET-------\n";
-        for (auto &i: cabinet_farmer) // cppcheck-suppress constVariableReference
+        for (auto &i: cabinet_farmer)
             std::cout <<*i<<"\n";
         std::cout<<"-------------------------\n";
     }
@@ -74,7 +74,7 @@ public:
         int index = -1;
         int ERASE=0,poz=0;
         Obiect *alt_pointer;
-        for (auto &i: cabinet_farmer) // cppcheck-suppress constVariableReference
+        for (auto &i: cabinet_farmer)
         {
             index++;
             if (i->get_name() == wanted_object)
@@ -114,7 +114,7 @@ public:
         Interfata interf_in_is_it_available;
         std::cout << "Searching for " << name_wanted_obj << " in the cabinet...\n";
         interf_in_is_it_available.click_any_key_to_continue();
-        for (auto &j: cabinet_farmer) // cppcheck-suppress constVariableReference
+        for (auto &j: cabinet_farmer)
         {
 
 //
@@ -125,7 +125,6 @@ public:
 //            first_part_of_string= strtok(copy," ");
 //
 //        }
-//        return false;
             if (j->get_name().find(name_wanted_obj)!=std::string::npos)
                     {
                         std::cout<<"###WE FOUND "<<name_wanted_obj<<" IN THE CABINET!###\n"
@@ -147,7 +146,7 @@ public:
                             else
                             {
                                 std::cout<<"You placed "<<name_wanted_obj<<" back in the cabinet\n";
-                                return 0;
+                                return false;
                             }
 
 
@@ -158,7 +157,7 @@ public:
                         else
                         {
                             std::cout<<"You placed "<<name_wanted_obj<<" back in the cabinet\n";
-                            return 0;
+                            return false;
                         }
 
 
@@ -169,7 +168,7 @@ public:
 
         }
         std::cout<<"Sorry, we couldnt find "<<name_wanted_obj<<" in the cabinet\n";
-        return 0;
+        return false;
 
 
 

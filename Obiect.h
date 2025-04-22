@@ -38,7 +38,7 @@ public:
         os<<"->"<<ob.name<<" - "<<ob.availability<<" available";
         return os;
     }
-    const std::string const get_name() const
+    const std::string& get_name() const
     {
 //        std::cout<<"mi ai cerut numele obiectului: "<<name<<"\n";
         return name;
