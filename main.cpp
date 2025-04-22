@@ -84,10 +84,10 @@ int main() {
 
 
         int OK=1,attempts=0;
-
+        std::string input1;
         while(OK==1 && attempts !=3)
         {
-            std::string input1;
+
             attempts++;
             std::cin>>input1;
             if(our_farmer.is_it_available(input1))

@@ -75,7 +75,7 @@ public:
     {
         int index = -1;
         int ERASE=0,poz=0;
-        Obiect *alt_pointer;
+        Obiect *alt_pointer= nullptr;
         for (auto &i: cabinet_farmer)
         {
             index++;
@@ -116,6 +116,7 @@ public:
         Interfata interf_in_is_it_available;
         std::cout << "Searching for " << name_wanted_obj << " in the cabinet...\n";
         interf_in_is_it_available.click_any_key_to_continue();
+        bool input_nr;
         for (auto &j: cabinet_farmer)
         {
 
@@ -132,7 +133,7 @@ public:
                     {
                         std::cout<<"###WE FOUND "<<name_wanted_obj<<" IN THE CABINET!###\n"
                                                                 "Type 1 to take the object from the cabinet or 0 to search for another item from the cabinet\n";
-                        bool input_nr;
+
                         std::cin>>input_nr;
                         if(input_nr==1)
                         {
