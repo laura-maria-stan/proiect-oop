@@ -40,6 +40,7 @@ public:
     Role_of_farmer(Role_of_farmer const &other)  : Role (other) {
         for(auto const &i: other.cabinet_farmer) // cppcheck-suppress constVariableReference
         cabinet_farmer.push_back(new Obiect(*i));
+
     }
 
     Role_of_farmer &operator=(Role_of_farmer const &other)
@@ -58,7 +59,8 @@ public:
 
     ~Role_of_farmer()
     {
-        cabinet_farmer.clear();
+        for(unsigned int i=0;i<cabinet_farmer.size();i++)
+            delete cabinet_farmer[i];
     }
 
 
@@ -125,6 +127,7 @@ public:
 //            first_part_of_string= strtok(copy," ");
 //
 //        }
+
             if (j->get_name().find(name_wanted_obj)!=std::string::npos)
                     {
                         std::cout<<"###WE FOUND "<<name_wanted_obj<<" IN THE CABINET!###\n"

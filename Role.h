@@ -55,7 +55,7 @@ protected:
 //
 //    void show_Shop()
 //    {
-//        for(auto const & i : Shop)
+//        for(auto const & i : Shop) ////dc are i referinta??? PTC: ca să nu se facă o copie; e drept că în cazul pointerilor nu contează
 //            std::cout<<*i;
 //
 //    }
@@ -95,7 +95,7 @@ public:
     }
     Role& operator= (Role const &other)
     {
-        if(&other==this) //dc trb sa pun &other?
+        if(&other==this) //dc trb sa pun &other? PTC: this este pointer; vrem să comparăm adresele ca să vedem dacă e vorba de același obiect
         {
             return *this;
         }
@@ -122,7 +122,13 @@ public:
     }
     ~Role()
     {
-        Shop.clear();
+        for(unsigned int i=0;i<Shop.size();i++)
+        {
+            delete Shop[i];
+        }
+
+
+
 //        Objects_Pony_Is_Holding.clear();
         delete first_object_on_back;
         delete second_object_on_back;
