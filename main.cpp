@@ -110,7 +110,7 @@ int main() {
                 std::cout<<"Type your next guess: ";
             }
         }
-        if(attempts==3)
+        if(attempts==3 && OK!=0)
         {
             std::cout<<"Your customer has gotten tired and left :(\nFIRST DAY=FAILED";
         }
