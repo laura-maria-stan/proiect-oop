@@ -17,7 +17,7 @@ private:
     void create_cabinet()
     {
 //        std::cout<<"CREEAZA CABINETUL\n";
-        for(const auto &i:Shop)
+        for(const auto &i:Shop) // cppcheck-suppress constVariableReference
         {
             if(i->get_code()==1)
             {
@@ -66,7 +66,7 @@ public:
 
     void show_cabinet() {
         std::cout<<"-------THE CABINET-------\n";
-        for (const auto &i: cabinet_farmer)
+        for (const auto &i: cabinet_farmer) // cppcheck-suppress constVariableReference
             std::cout <<*i<<"\n";
         std::cout<<"-------------------------\n";
     }
@@ -76,7 +76,7 @@ public:
         int index = -1;
         int ERASE=0,poz=0;
         Obiect *alt_pointer= nullptr;
-        for (const auto &i: cabinet_farmer)
+        for (const auto &i: cabinet_farmer) // cppcheck-suppress constVariableReference
         {
             index++;
             if (i->get_name() == wanted_object)
@@ -117,8 +117,8 @@ public:
         std::cout << "Searching for " << name_wanted_obj << " in the cabinet...\n";
         interf_in_is_it_available.click_any_key_to_continue();
         bool input_nr;
-        for (const auto &j: cabinet_farmer)
-        {
+        for (const auto &j: cabinet_farmer) // cppcheck-suppress constVariableReference
+        { 
 
 //
 //            std::string first_part_of_string;
