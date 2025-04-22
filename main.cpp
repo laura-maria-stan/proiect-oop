@@ -106,7 +106,7 @@ int main() {
             }
             if(attempts!=3 && OK!=0)
             {
-                std::cout<<"rn attempts e "<<attempts<<"\n";
+                std::cout<<"attempts left: "<<3-attempts<<"\n";
                 std::cout<<"Type your next guess: ";
             }
         }
