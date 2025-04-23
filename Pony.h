@@ -64,7 +64,7 @@ class Pony {
         }
         friend std::ostream& operator<< (std::ostream& os, const Pony &ob)
         {
-            os<< "The pony "<<ob.name<<" has the role of the "<<ob.pony_role<<"\n";
+            os<< "The pony "<<ob.name<<" has the role of the "<<*ob.pony_role<<"\n";
             return os;
         }
 
