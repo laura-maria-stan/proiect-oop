@@ -8,7 +8,6 @@
 #include <iostream>
 #include "Obiect.h"
 #include <vector>
-#include "Interfata.h"
 #include <cstring>
 
 class Role_of_farmer: protected Role {
@@ -113,9 +112,10 @@ public:
 
 
     bool is_it_available(std::string const &name_wanted_obj) {
-        Interfata interf_in_is_it_available;
         std::cout << "Searching for " << name_wanted_obj << " in the cabinet...\n";
-        interf_in_is_it_available.click_any_key_to_continue();
+        std::string input_key;
+        std::cout<<"(press any key+enter to continue)\n";
+        std::cin>>input_key;
         bool input_nr;
         for (const auto &j: cabinet_farmer) // cppcheck-suppress constVariableReference
         { 

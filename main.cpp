@@ -2,6 +2,7 @@
 //#include <fstream>
 #include <string>
 #include <vector>
+#include <map>
 
 #include "Role.h"
 //#include "Status.h"
@@ -9,6 +10,7 @@
 //#include "Obiect.h"
 #include "Role_of_farmer.h"
 #include "Interfata.h"
+#include "ext/random.hpp"
 
 
 int main() {
@@ -128,91 +130,8 @@ int main() {
 
 
 
-//    while (OK_first_day == 0 && attempts_day_one != 3) {
-//        attempts_day_one++;
-//        std::cin >> produs_fermier;
-//        std::cout << "U TYPED: " << produs_fermier << "\n";
-//        un_fermier.show_cabinet();
-//        int check = un_fermier.is_it_available(produs_fermier);
-////        std::cout << " a trms in is it available de la variabila check care este: "<< check<<"\n";
-//        if (check==1) {
-//            std::cout << "###CORRECT!"
-//                         "   THIS IS EXACTLY WHAT YOUR CLIENT WANTED###\n"
-//                         "###CONGRATS, YOU HAVE COMPLETED YOUR FIRST ORDER###!\n";
-//            OK_first_day = 1;
-//            un_fermier.take_one_obj_out_of_cabinet(produs_fermier);
-//        } else if (check==0)
-//        {
-//            std::cout << "###WRONG GUESS, " << produs_fermier << " IS NOT WHAT YOUR CLIENT WANTED###\n"
-//                                                                 "###PUT THE OBJECT BACK AND TRY AGAIN###\n";
-//        }
-//        else if (check == -1)
-//        {
-//            std::cout<<" ###WRONG GUESS, "<<produs_fermier <<" IS NOT AN ITEM IN YOUR CABINET###\n"
-//                                                             "### LOOK CLOSER AT THE OBJECTS IN THE CABINET AND TRY AGAIN ####\n";
-//            un_fermier.show_cabinet();
-//
-//        }
-//        else
-//        {
-//            std::cout<<"You closed the cabinet"
-//        }
-////        std::cout<<"ok first day: "<<OK_first_day<<"\n";
-//    }
-//
-//    if (attempts_day_one == 3) {
-//        std::cout << "###YOUR CLIENT HAS GOTTEN TIRED AND LEFT###"
-//                     "\n";
-//    } else {
-//        std::cout << "\n\n###ANOTHER CUSTOMER STEPS INTO THE SHOP###\n"
-//                     "###PRESS ANY KEY TO TAKE THEIR ORDER###\n\n";
-//        std::string val;
-//        std::cin >> val;
-//        std::cout << "\n\n"
-//                     "   /0-      |--------------------------------|\n"
-//                     "/---|       |   I want an orange vegetable!  |\n"
-//                     "|   |       |________________________________|\n\n\n";
-//        std::cin >> produs_fermier;
-//        unsigned int OK_second_day = 0, attempts_day_two = 0;
-//
-//        std::cout << "###TYPE WHAT OBJECT YOU THINK THE CLIENT IS REFERRING TO IN ORDER TO\n"
-//                     "   SEARCH FOR IT IN THE CABINET ###\n";
-//        while (OK_second_day == 0 && attempts_day_two != 3) {
-//            attempts_day_two++;
-//            std::cin >> produs_fermier;
-//            std::cout << "U TYPED: " << produs_fermier << "\n";
-//            un_fermier.show_cabinet();
-//            int check = un_fermier.is_it_available(produs_fermier);
-//            std::cout << "functia: " << un_fermier.is_it_available(produs_fermier) << "\n";
-//            if (check) {
-//                std::cout << "###CORRECT!"
-//                             "   THIS IS EXACTLY WHAT YOUR CLIENT WANTED###\n"
-//                             "###CONGRATS, YOU HAVE COMPLETED YOUR FIRST ORDER###!\n";
-//                OK_second_day = 1;
-//                un_fermier.take_one_obj_out_of_cabinet(produs_fermier);
-//            }
-//            else if (check==0)
-//            {
-//                std::cout << "###WRONG GUESS, " << produs_fermier << " IS NOT WHAT YOUR CLIENT WANTED###\n"
-//                                                                     "###PUT THE OBJECT BACK AND TRY AGAIN###\n";
-//            }
-//            else
-//            {
-//                std::cout<<" ###WRONG GUESS, "<<produs_fermier <<" IS NOT AN ITEM IN YOUR CABINET###\n"
-//                                                                 "### LOOK CLOSER AT THE OBJECTS IN THE CABINET AND TRY AGAIN ####\n";
-//
-//            }
-////        std::cout<<"ok first day: "<<OK_first_day<<"\n";
-//
-//
-//            if (attempts_day_two == 3) {
-//                std::cout << "###YOUR CLIENT HAS GOTTEN TIRED AND LEFT###"
-//                             "\n";
-//            }
-//
-//        }
-//
-//
-//    }
+
+
+
     return 0;
 }

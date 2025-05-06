@@ -15,7 +15,7 @@ private:
     {
         auto *ob1=new Obiect("tomato seeds",10,10,1);
         Shop.push_back(ob1);
-        auto *ob2=new Obiect("wheat seeds",2,10,1);
+        auto *ob2=new Obiect("cucumber seeds",2,10,1);
         Shop.push_back(ob2);
         auto *ob3=new Obiect("onion seeds",6,10,1);
         Shop.push_back(ob3);
@@ -23,15 +23,15 @@ private:
         Shop.push_back(ob4);
         auto *ob5=new Obiect("potato seeds",6,10,1);
         Shop.push_back(ob5);
-        auto ob6=new Obiect("rosie", 0, 10, 2);
+        auto ob6=new Obiect("tomato", 0, 10, 2);
         Shop.push_back(ob6);
-        auto *ob7=new Obiect("cartof",0,10,2);
+        auto *ob7=new Obiect("potato",0,10,2);
         Shop.push_back(ob7);
-        auto *ob8=new Obiect("morcov",0,10,2);
+        auto *ob8=new Obiect("carrot",0,10,2);
         Shop.push_back(ob8);
-        auto *ob9=new Obiect("grau",0,10,2);
+        auto *ob9=new Obiect("cucumber",0,10,2);
         Shop.push_back(ob9);
-        auto *ob10=new Obiect("ceapa",0,10,2);
+        auto *ob10=new Obiect("onion",0,10,2);
         Shop.push_back(ob10);
         auto *ob11=new Obiect("paduden",5,10,3);
         Shop.push_back(ob11);
