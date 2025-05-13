@@ -2,6 +2,9 @@
 // Created by stanb on 21.04.2025.
 //
 #include <iostream>
+#include <map>
+#include <string>
+#include <vector>
 #include "Role.h"
 #include "Role_of_farmer.h"
 #include "ext/random.hpp"
@@ -11,8 +14,12 @@
 
 
 class Interfata {
+private:
+    std::map <std::string, std::vector <std::string>> phrases;
+    std::vector<std::string> keys;
+
 public:
-    void click_any_key_to_continue()
+    static void click_any_key_to_continue()
     {
 
         std::string input_any_key;
@@ -20,15 +27,12 @@ public:
         std::cin>>input_any_key;
 
     }
-    std::string generate_request()
+    void create_random_clients_order_strings()
     {
-
         using Random = effolkronium::random_static;
         auto val = Random::get( );
         // val is random number in [ Random::min( ), Random::max ] range
         //using library random
-        std::map<std::string, std::vector <std::string>> phrases;
-        std::vector<std::string> keys;
         phrases["tomato"].push_back("I want a red fruit");
         phrases["tomato"].push_back("I'd like a solanum lycopersicum");
         phrases["tomato"].push_back("What's the thing ketchup is made of? I'd like one of these");
@@ -55,34 +59,40 @@ public:
         phrases["potato"].push_back("One round underground vegetable please");
         phrases["potato"].push_back("One round underground vegetable please");
         phrases["potato"].push_back("One Solanum tuberosum!");
+    }
 
+
+    std::string generate_request(std::string &the_order)
+    {
+        using Random = effolkronium::random_static;
         for (const auto& pair : phrases)
             keys.push_back(pair.first);
         std::string randomKey = *Random::get(keys);
         //dereferentiat ptc get intoarce un iterator not the value itself
+        the_order=randomKey;
         return *Random::get(phrases[randomKey]);
-
-
 
     }
 
-    void general_day(int number_day)
+    bool general_day(int &number_day)
     {
         Role_of_farmer our_farmer;
 
         int index_customer=0;
+        bool success=false;
         while(index_customer>=number_day+2)
         {
-            index_customer
-            std::cout << "Here comes your first customer!\n"
-                         "   /0-      |------------------------|\n"
-                         "/---|       |   I want a red fruit!  |\n"
-                         "|   |       |________________________|\n\n\n";
-
+            index_customer++;
+            std::cout<<"A customer is here!";
+            click_any_key_to_continue();
+            std::string clients_order;
+            std::cout<<generate_request(clients_order);
             click_any_key_to_continue();
             std::cout<<"Before you try to guess, take a look at the cabinet:\n";
             our_farmer.show_cabinet();
             click_any_key_to_continue();
+
+
 
 
             std::cout << "###TYPE WHAT OBJECT YOU THINK THE CLIENT IS REFERRING TO IN ORDER TO\n"
@@ -98,7 +108,7 @@ public:
                 std::cin>>input1;
                 if(our_farmer.is_it_available(input1))
                 {
-                    if(input1=="tomato")
+                    if(input1==clients_order)
                     {
                         std::cout<<"Congrats! Your order was successful!\n";
                         OK=0;
@@ -106,7 +116,6 @@ public:
                     else
                     {
                         std::cout<<"This is not what your client wanted\n";
-
                     }
 
                 }
@@ -119,13 +128,17 @@ public:
             if(attempts==3 && OK!=0)
             {
                 std::cout<<"Your customer has gotten tired and left :(\nFIRST DAY=FAILED";
+                success=false;
             }
             else if(OK==0)
             {
                 std::cout<<"CONGRATS!\nFIRST DAY=SUCCESSFUL";
+                success=true;
             }
         }
-        }
+        number_day++;
+        return success;
+    }
 
 
 

@@ -63,62 +63,14 @@ int main() {
 
     if(nr_input==1)
     {
-        interfata_ponei.click_any_key_to_continue();
-
-        Role_of_farmer our_farmer;
-
-
-        std::cout << "\n\n\nWelcome to your first day on the job!\n";
-        interfata_ponei.click_any_key_to_continue();
-        std::cout << "Here comes your first customer!\n"
-                     "   /0-      |------------------------|\n"
-                     "/---|       |   I want a red fruit!  |\n"
-                     "|   |       |________________________|\n\n\n";
-
-        interfata_ponei.click_any_key_to_continue();
-        std::cout<<"Before you try to guess, take a look at the cabinet:\n";
-        our_farmer.show_cabinet();
-        interfata_ponei.click_any_key_to_continue();
-
-
-        std::cout << "###TYPE WHAT OBJECT YOU THINK THE CLIENT IS REFERRING TO IN ORDER TO\n"
-                     "   SEARCH FOR IT IN THE CABINET: ###\n";
-
-
-        int OK=1,attempts=0;
-        std::string input1;
-        while(OK==1 && attempts !=3)
+        interfata_ponei.create_random_clients_order_strings();
+        Interfata::click_any_key_to_continue();
+        int nr_day=1;
+        if(interfata_ponei.general_day(nr_day))
         {
-
-            attempts++;
-            std::cin>>input1;
-            if(our_farmer.is_it_available(input1))
-            {
-                if(input1=="tomato")
-                {
-                    std::cout<<"Congrats! Your order was successful!\n";
-                    OK=0;
-                }
-                else
-                {
-                    std::cout<<"This is not what your client wanted\n";
-
-                }
-
-            }
-            if(attempts!=3 && OK!=0)
-            {
-                std::cout<<"attempts left: "<<3-attempts<<"\n";
-                std::cout<<"Type your next guess: ";
-            }
-        }
-        if(attempts==3 && OK!=0)
-        {
-            std::cout<<"Your customer has gotten tired and left :(\nFIRST DAY=FAILED";
-        }
-        else if(OK==0)
-        {
-            std::cout<<"CONGRATS!\nFIRST DAY=SUCCESSFUL";
+            if(interfata_ponei.general_day(nr_day))
+                if(interfata_ponei.general_day(nr_day))
+                    std::cout<<"GAME WON";
         }
 
     }

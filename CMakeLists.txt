@@ -69,6 +69,7 @@ add_executable(${MAIN_EXECUTABLE_NAME}
         Obiect.h
         Interfata.cpp
         Interfata.h
+        Interfata.cpp
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )
